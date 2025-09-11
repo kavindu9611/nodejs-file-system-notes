@@ -1,0 +1,47 @@
+
+
+So we have our hard drive.
+And then on top of this hard drive, we're running our operating system.
+So your operating system is managing the hardware.
+You also have different processes running.
+In this case we have Node.js.
+So when you run a Node.js application you're actually opening a new process on your operating system.
+Now, what happens is that when you're dealing with files using nodes.
+Node just doesn't have any idea how to go to your hard drive.
+And then find a file and modify the bits there.
+It doesn't really have any idea how to do it.
+So it's not going to go directly into your hard drive.
+So what happens is that NodeJS is talking to your operating system.
+So the way that happens is using some things called system calls.
+So Node.js using system calls talks to your operating system.
+And then your operating system goes to the hardware and do some different things.
+Now imagine you want to open a file in node.
+So you want to open a text file.
+You're going to call a system call.
+You're going to tell the operating system that I want to do that I want to open that file.
+Now in this case you're going to use the open system call.
+So you're going to run that open call which is an operating system command.
+And then your operating system is going to go to the hard drive.
+Find that file, fetch those zeros and ones and give you the data.
+And then you could do whatever you want with it.
+You could maybe open different files using this open system command.
+Actually you're not directly calling this open command.
+What you're doing is that you are running a function in node.
+And then NodeJS using Libuv. Libuv is actually calling this open system call.
+So you're just talking to the operating system.
+And operating system here is kind of like a middleman.
+So it's going to go ahead fetch those files that you want and give you those files.
+And then maybe you are going to go ahead and then add them together and create a new file containing
+those files.
+And then write that file again onto the hard drive.
+So you might use another system call 
+So we have different system calls.
+We also have a rename system call.
+So you could call this rename and then change the name of a file.
+So NodeJS is using Libuv to do this.
+It's using the Libuv to call these system calls and to get those zeros and ones, or to write those
+zeros and ones onto the hard drive.
+And there's also this thing inside of Libuv called Threadpool
+So NodeJS is using different threads to deal with the files.
+If you are really doing some heavy calculations on the files, you're actually really exhausting that
+thread pool and you might want to come up with different solutions.
