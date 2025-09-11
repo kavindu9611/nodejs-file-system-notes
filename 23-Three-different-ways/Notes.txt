@@ -1,0 +1,381 @@
+ What really NodeJS does when you try to deal with the files using the FS module.
+
+There are three different ways in nodejs to deal with files(create a file , delete a file,etc...)
+    1.Promises API
+    2.Callback API
+    3.Synchronous API.
+
+
+We have these three ways of doing the same thing.
+
+How do they differ?
+in terms of functionality, they don't.
+Meaning that if you want to delete a file, it doesn't matter if you use the promise API or the callback
+API or the other one, the file is actually going to get deleted.
+In terms of how they do it, well it's a little bit different.
+
+Now you might be asking how and which one of these should I use in my applications.
+Now to answer your question, I should say that in general, maybe 90% of the time or 99% of the time,
+especially when you're just starting out, stick with the promises API.
+Okay, so if you're just starting out, use the promises API as much as you possibly could.
+It's a lot cleaner.
+
+And when you really want to have the maximum amount of performance,
+Now, in very rare cases, when you're doing something really complex and it takes a ton amount of CPU
+computational power, in those cases, you might want to stick with the callback API.
+And I'm saying this actually based on what Node.js documentation says.
+It says callback API in the file system module is faster than the promises API, and use this callback
+version when performance is really critical to you and you want to have the maximum amount of it.
+
+Now about the synchronous API, you just try to stay away from it as much as you possibly could.
+Only use it when you're dead sure that you have to use it.
+For example, one case that you might want to use it is that you are trying to read a configuration
+file before you actually start your application.
+So you need some of the data in that configuration file to really start your application.
+And without them, you can't proceed.
+You can't really run your application and you're going to run into so many different errors.
+So in a case like that, and it's actually going to happen only once when you're starting your application,
+it makes sense to use the synchronous API.
+
+
+ Promises API and callback API are a lot faster than Synchronous API
+Actually, they're not faster.
+But what happens is that when you are using the synchronous API, you are blocking your main thread.
+So for example, if someone is uploading a file and you are saving the file using the synchronous API,
+when someone starts to upload a file, your whole application will freeze.
+So if you're running only one instance of your NodeJS application, only one process, that process
+is going to get freezed until it's done with the uploading, which is of course not ideal and you don't
+want that to happen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+And I have actually copied this code in.
+
+So you don't have to watch me typing these.
+
+So I have the exact same function copy file.
+
+But I'm doing it using these three different APIs.
+
+So the first two are asynchronous ways of doing it using the promise API and the callback API.
+
+And the last one is using the synchronous API.
+
+So what I'm doing is that I'm copying this file and actually name is file dot txt.
+
+So let me just quickly change this.
+
+So I have a file here in the same directory called dot txt.
+
+And I'm going to copy this file to a new file.
+
+And I'm going to name it something like copied and then the name of the API.
+
+So in this case copied promise, copied callback and copied sync.
+
+And we're going to see how do they differ.
+
+Do they actually differ or not.
+
+So let's go ahead and try to run some of these.
+
+So I'm going to first comment out the synchronous API version and the callback version.
+
+And let's just go ahead and run it using the promise API.
+
+So I'm going to open up my terminal and I'm going to run node node app.js.
+
+And we're not logging anything.
+
+But if you take a look here we have copied the file over.
+
+So now we have a new file called Copied Promise which has the exact same contents as the file dot.
+
+TXT.
+
+So so far so good right?
+
+And now let's go ahead and do the same thing using the callback API.
+
+And I want you to just take a look at the syntax and see how do they differ.
+
+If you take a look at the name of the functions are the same.
+
+So f dot copy file.
+
+Now in this case we are requiring out of the fs module.
+
+But in this case we are requiring out of FS slash promises which again something to keep in mind when
+
+we want to use the promise API.
+
+But in terms of the function itself, they do the exact same thing.
+
+I mean, they even have the same arguments.
+
+So the first one is my source, and then my second argument is my destination.
+
+Now in this case we are catching the error using try and catch.
+
+And in this case we are catching the error using a callback function.
+
+And here we have the error first as an argument, which is pretty common whenever you are using callbacks
+
+in Node.js.
+
+So you're passing a callback to a function.
+
+And always the first argument is an error, and maybe the second argument could be something else.
+
+Maybe I don't know something, but and when you're dealing with NodeJS callbacks, it's this error.
+
+First as arguments is very common and you're going to see it a lot.
+
+And also one more point.
+
+I said stick with the promise API because it's a lot cleaner.
+
+Now in this case, well, the callback version looks cleaner.
+
+But the reason is it's just I'm doing this immediately invoked function because I want to make use of
+
+this await and async syntax.
+
+But in a lot of cases, you don't actually have to do this and you're already inside of a function.
+
+So you just mark it with async and then you're good to go.
+
+So we have these try and catch.
+
+But again it's it gets a lot cleaner as time goes by comparing to the callback API.
+
+Because you might run into callback hell.
+
+You might have maybe another callback function here and another inside of it.
+
+So in general, just try to stick with the promise API and only try to do this callback API when you
+
+are.
+
+When performance is really important to you and you want to have the maximum amount of it.
+
+Okay, so we ran the promise API version, so I'm just not going to comment this one out.
+
+And now let's go ahead and run the callback API.
+
+So I'm just going to say note dot note app.js.
+
+And again we're not logging anything.
+
+But if you take a look here in my directory now I have another file called copied callback.
+
+And again I have the exact same contents.
+
+So these two are doing the exact same thing.
+
+It doesn't matter if I want to do it using the callback version or using the promise version.
+
+They accept the same arguments, the parameters are the same and well, what they do is the same.
+
+Even the name of the functions are the same.
+
+Now let's go ahead and do it using the synchronous API.
+
+Now in this case well we're requiring the FS module just like here in the callback API.
+
+But the name of the function is slightly different.
+
+So what's different is that we in the synchronous API we usually have to actually I think all of the
+
+cases we have this sync thing at the end of name of the functions.
+
+So copy file sync unlink sync or create file sync.
+
+So we have this in the synchronous API.
+
+Because as I said before you really got to be cautious whenever you want to use this function.
+
+So now just kind of wants to make it super clearer that you are using the synchronous API.
+
+So you have to be careful and you will know that you are using the synchronous API.
+
+So only use it when you are 100% sure that you have to use it.
+
+Now, in this case, we don't have any kind of error handling in place.
+
+If it goes wrong, my whole application is going to quit.
+
+But as you can see here, it's really the same thing as this one.
+
+So copy file and then source and destination.
+
+So let's go ahead and run this one too.
+
+So I'm just going to say node app.js.
+
+And again sure enough we have copied dash sync which has the exact same contents.
+
+So I copied the file and note using the module but using three different ways, either using the promise
+
+API or the callback API or the synchronous API.
+
+Okay, now you might be asking what happens if we have an error?
+
+So let's go ahead and try that out too.
+
+So I'm just going to change the name of my file.
+
+Or I might delete it.
+
+Actually I'm just going to add one to it because in this case our source is now is not going to be found.
+
+Now let's try the promise API first and see what kind of error we're going to get.
+
+So we're catching the error here.
+
+And then we're logging it onto the screen.
+
+Simple enough I'm going to run it.
+
+And as you can see we're getting an object back which which has the code of this.
+
+So it says that no such file or directory at this source.
+
+So it cannot proceed with the copy operation.
+
+Now let's go ahead and try the same thing using the callback API.
+
+I'm going to run it.
+
+And as you can see we're getting the exact same error with the same exact same error number code.
+
+And it's just the real really exact same thing.
+
+Now let's try it with the synchronous API.
+
+Now, in this case it's a little bit different.
+
+But again, the error code and all the rest of the data is the same thing.
+
+Now the difference here is that it is coming differently.
+
+So here we are catching the error and we could handle it.
+
+We could we could do something to maybe proceed with our application if that error happens and not quit.
+
+But in this case my whole application will quit.
+
+The whole process will quit as soon as something goes wrong here.
+
+So it's kind of like if I try to reference a variable that does not exist like this.
+
+If I run this, I'm going to get an error just like here.
+
+Okay.
+
+So three different ways to do the same thing a node.
+
+Now in our application that we're going to create, we're going to stick with the promise API.
+
+So we're not going to use any synchronous API or callback API.
+
+But you should know that they do exist and I can't comment this out okay.
+
+So let me also show you how Node.js documentation is indicating these three different ways.
+
+So I'm just going to search for node js file system.
+
+Oops.
+
+Typo.
+
+But here it found it.
+
+Okay, so if you scroll actually right at the top here, you could see that it has three different examples
+
+using the promise example, the callback example and the synchronous example.
+
+So right off the bat you could see that NodeJS is saying that you have these three different ways of
+
+doing the same thing.
+
+So if you see that the file system documentation is super long, it's actually because it's describing
+
+the same thing but using these three different ways, which actually they're all really similar and
+
+nothing really different.
+
+Now in the real world, whenever you want to use one of these functions, you might want to come to
+
+the documentation.
+
+So you really don't have to memorize anything to know that, hey, the promise API uses this set of
+
+arguments, and maybe the callback API uses those set of arguments.
+
+Actually, again, in a lot of cases they're the same thing.
+
+I didn't see anything that was different, but there might be.
+
+So it's always good to come here and take a look at the function that you want to work with.
+
+So for example, if you want to create a directory click on it.
+
+And in this case it's the callback version.
+
+Now if we want to see the promise version just search for that like this.
+
+And then you could find the.
+
+Here we found the synchronous version.
+
+If we keep going I don't know where it is, but I think it is somewhere around here.
+
+If you just keep looking, hopefully I could find it.
+
+Oh here it's actually efforts promises I didn't know that.
+
+So promises.
+
+It's called promises.
+
+And in the callback NodeJS is calling it efforts.
+
+But anyway you could see that it's the exact same function using the exact set of arguments.
+
+And then you could also see an example.
+
+So always whenever you want to use a function in the file system module.
+
+And actually anything that you want to use in NodeJS, any kind of function come to the documentation
+
+and read that through okay.
