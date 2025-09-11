@@ -1,0 +1,54 @@
+File is a sequence of bits which is defined by the user.
+Each sequence of bit might mean a different thing depending upon how you want to decode that data
+
+So in the case of a text file,a certain sequence of bits might mean a character.If the
+file is an image,might mean a completely different thing.It might mean something that associated with the image(color code,location of a pixel).
+
+It is important that we say how we want to open the file,how we want to decode those zeroes and ones.
+
+Now,everything you have on your computer is just a file.
+
+So your
+    * storage device, 
+    * your hard drive, 
+    * SSD,
+    * flash disk, 
+    * your USB, 
+they're all divided to files.
+In other words, a storage unit of a storage device is a file.
+
+Now file could represent different things.
+It could represent a program or they could represent maybe some data.
+Data could mean an image, a video file or something that's in a free form, like a text file, like
+a JavaScript file.
+
+So that's really what a file is.
+And now let's take a look at the diagram.
+So you have your hard drive.
+And you have written some data on it.
+And remember, data is just some zeros and ones in a computer.
+So this is your hard drive and this is all of your data.
+Now each sequence of bits here means a file.
+
+Now each file also has some other data associated with it.
+Now they are usually saved in some other file, which is called a file data which corresponds to a file.
+So in that file we have stuff like 
+    1- the name of that file 
+    2- The protection -Protection means whether or not you could write to a file.Or maybe you could just read the file and you can't write to it.
+         Or also if someone else on your computer  can open that file or not.So these are things related to protection of the file saved onto that file data.
+    3- location of a file which is just a path name.
+    4- type -Using type we could actually know how to interpret the file.
+        So depending upon the type of the file, we open that file differently.
+        We use different decodings to open it.
+        We might use a character decoding if it's a text file, or we might use an image decoding if it's an
+        image file or a video decoding if it's a video or any other types of decoding.
+
+    5-We also have some time stamps associated with the file.
+      When was the file last opened?
+      When was it last modified, when was it created?
+
+So your whole hard drive is divided into different files.
+You cannot write anything on your hard drive unless you write it to a file.
+So everything you have on your drive is just a file.
+And actually your whole operating system itself is just different files.
+Everything you have on your computer, they're all just files.
