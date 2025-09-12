@@ -1,0 +1,18 @@
+Async Iterators
+
+An iterator is like a list you can go through one item at a time.
+
+const numbers = [1, 2, 3, 4];
+for (const number of numbers) {
+    console.log(number); // prints 1, then 2, then 3, then 4
+}
+
+An async iterator is the same thing, but each item might take 
+time to arrive (like waiting for mail). Instead of having all items 
+ready immediately, they come one by one over time.
+
+// Regular loop (all items ready now)
+for (const item of regularList) { }
+
+// Async loop (items arrive over time)
+for await (const item of asyncList) { }
