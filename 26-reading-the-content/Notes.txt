@@ -1,0 +1,17 @@
+When we want to read a file
+First we have to open it
+And then once the file is opened, you could either read from that file or you could write to that file
+or append to it, or get the status of that file.
+By status I mean that file data.
+For example, you want to see when that file was last modified.
+
+Now what really happens when you open a file is that you are you're not actually moving the whole contents
+of that file to your memory.
+What happens is that you are just saving a number regarding that file.
+It's called a file descriptor.
+
+file descriptor - is just a number that has been assigned to an opened file
+                  each open file has a unique file descriptor
+
+<FileHandle> objects are <EventEmitter>s
+This means FileHandle object is inheriting from EventEmitter object
