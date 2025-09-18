@@ -1,6 +1,6 @@
 //******* Promise API*********//
 
-// const fs = require("fs").promises;
+// const fs = require("fs/promises");
 
 // (async ()=>{
 //     try{
@@ -22,6 +22,7 @@
 // });
 
 //******* Synchronous API*********//
+
 const fs = require("fs");
 
 fs.copyFileSync("file.txt" , "copied-sync.txt")

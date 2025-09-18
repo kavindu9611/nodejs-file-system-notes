@@ -1,11 +1,12 @@
 
-
 So we have our hard drive.
 And then on top of this hard drive, we're running our operating system.
 So your operating system is managing the hardware.
+
 You also have different processes running.
 In this case we have Node.js.
 So when you run a Node.js application you're actually opening a new process on your operating system.
+
 Now, what happens is that when you're dealing with files using nodes.
 Node just doesn't have any idea how to go to your hard drive.
 And then find a file and modify the bits there.

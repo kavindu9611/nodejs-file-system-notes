@@ -1,8 +1,9 @@
 File is a sequence of bits which is defined by the user.
-Each sequence of bit might mean a different thing depending upon how you want to decode that data
+Each sequence of bit might mean a different thing depending upon how you want to decode that data.
 
 So in the case of a text file,a certain sequence of bits might mean a character.If the
-file is an image,might mean a completely different thing.It might mean something that associated with the image(color code,location of a pixel).
+file is an image,might mean a completely different thing.It might mean something that associated with the 
+image(color code,location of a pixel).
 
 It is important that we say how we want to open the file,how we want to decode those zeroes and ones.
 
