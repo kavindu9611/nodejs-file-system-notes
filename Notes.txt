@@ -16,3 +16,14 @@ for (const item of regularList) { }
 
 // Async loop (items arrive over time)
 for await (const item of asyncList) { }
+
+
+
+*****************************************************
+What is encoder and decoder
+
+decoder ----> convert 01(zeroes and ones) to something meaningful
+encoder ----> convert meaningful things to 01(zeroes and ones) 
+
+Nodejs only understands character decoder and character encoder
+It doesnt understand image encoder and video decoder
