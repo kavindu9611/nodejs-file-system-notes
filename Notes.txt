@@ -27,3 +27,21 @@ encoder ----> convert meaningful things to 01(zeroes and ones)
 
 Nodejs only understands character decoder and character encoder
 It doesnt understand image encoder and video decoder
+
+
+*****************************************
+
+Absolute path - path that is relative to your whole operating system
+
+
+************************************************
+Unlink and rm functions
+
+Unlink                                       rm
+
+* Cannot delete directories             * Can delete directories with files\
+* Cannot delete multiple files          * Can delete multiple files
+
+
+rm -rf   
+rf means recursively force
